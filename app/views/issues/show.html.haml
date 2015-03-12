@@ -1,0 +1,42 @@
+%h1 Issue Details
+
+%p{:id => "notice"}=notice
+
+%p
+  %strong Public ID:
+  = @issue.public_id
+
+%p
+  %strong Subject:
+  = @issue.subject
+
+%p
+  %strong Author:
+  = @issue.customer_name
+
+%p
+  %strong Cteated on:
+  = @issue.created_on
+
+%p
+  %strong Updated on:
+  = @issue.updated_on
+
+%p
+  %strong Status:
+  = @issue.status.name
+
+%p 
+  %strong Department:
+  = @issue.department.name
+%p 
+  %strong Description: 
+  = @issue.description
+
+= render partial: 'history'
+
+%h2 Edit Issue
+
+= render partial: 'update_form'
+
+= link_to 'Back', manage_path

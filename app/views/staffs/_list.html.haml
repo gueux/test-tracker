@@ -1,0 +1,16 @@
+%table
+  %thead
+    %tr
+      %th Name
+      %th Login
+      %th Mail
+      %th{:colspan => "3"}
+
+  %tbody
+    - staffs.each do |staff|
+      %tr
+        %td= staff.name
+        %td= staff.login
+        %td= staff.mail
+        %td= link_to 'Destroy', staff_path(staff.id), method: :delete, data: { confirm: 'Are you sure?' } 
+

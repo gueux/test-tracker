@@ -1,0 +1,28 @@
+%table
+  %thead
+    %tr
+      %th PublicID
+      %th Department
+      %th Subject
+      %th Cteated on
+      %th Updated on
+      %th Status
+      %th Author
+      %th Assigned to
+      %th{:colspan => "3"}
+
+  %tbody
+    - issues.each do |issue|
+      %tr
+        %td= issue.public_id
+        %td= issue.department.name
+        %td= issue.subject 
+        %td= issue.created_on 
+        %td= issue.updated_on 
+        %td= issue.status.name
+        %td= issue.author.name
+        %td= (issue.assigned_to) ? issue.assigned_to.name : 'Nobody'
+        %td= link_to 'Show', issue_path(issue.public_id) 
+        %td= link_to 'Take', take_issue_path(issue.public_id) 
+        %td= link_to 'Destroy', issue_path(issue.public_id), method: :delete, data: { confirm: 'Are you sure?' } 
+

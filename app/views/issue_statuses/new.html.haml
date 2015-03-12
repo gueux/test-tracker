@@ -1,0 +1,9 @@
+%h1 Status List
+= render partial: 'list', locals: {statuses: @issue_statuses} unless @issue_statuses.empty?
+%br
+
+%h1 Add new Issue Status
+= render partial: 'form'
+%br
+
+= link_to 'Back', manage_path

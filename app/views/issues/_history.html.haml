@@ -1,0 +1,3 @@
+#history
+  %h2 Issue History:
+  = render partial: 'history_list', collection: @issue.histories, as: :note unless @issue.histories.empty?

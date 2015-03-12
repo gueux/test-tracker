@@ -1,0 +1,26 @@
+%p#notice= notice 
+
+- unless @current_user.nil?
+  %h1 You are logged in as #{@current_user.name}
+
+%h2 Unassigned Issues
+= render partial: 'issue_table', locals: {issues: @unassigned_issues} unless @unassigned_issues.empty?
+%br
+
+%h2 Open Issues
+= render partial: 'issue_table', locals: {issues: @open_issues} unless @open_issues.empty?
+%br
+
+%h2 OnHold Issues
+= render partial: 'issue_table', locals: {issues: @onhold_issues} unless @onhold_issues.empty?
+%br
+
+%h2 Closed Issues
+= render partial: 'issue_table', locals: {issues: @closed_issues} unless @closed_issues.empty?
+%br
+
+= link_to 'Add Status', new_issue_status_path
+|
+= link_to 'Add Staff', new_staff_path
+|
+= link_to 'Logout', logout_path, :method => :delete

@@ -1,0 +1,10 @@
+= form_tag staffs_path, method: 'post'
+%label Name
+= text_field_tag 'staff[name]', nil, {:required => true}
+%label Login
+= text_field_tag 'staff[login]', nil, {:required => true}
+%label Mail
+= text_field_tag 'staff[mail]', nil, {:required => true}
+%label Password
+= password_field_tag 'staff[hashed_password]', nil, {:required => true}
+= submit_tag 'Add'

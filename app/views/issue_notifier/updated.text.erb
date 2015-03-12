@@ -1,0 +1,7 @@
+Dear <%= @issue.customer_name %>
+
+Your issue with the subject: "<%= @issue.subject%>" and ID: <%= @issue.public_id%> has been updated
+---------
+<%= @message %>
+---------
+You may check the status of the issue following by the link: <%= public_show_url(@issue.public_id) %>

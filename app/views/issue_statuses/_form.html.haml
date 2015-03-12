@@ -1,0 +1,6 @@
+= form_tag issue_statuses_path, method: 'post'
+%label StatusName
+= text_field_tag 'issue_status[name]', nil, {:required => true}
+%label Closed?
+= check_box_tag "issue_status[is_closed]", 1
+= submit_tag 'Add'

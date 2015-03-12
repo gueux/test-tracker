@@ -1,0 +1,26 @@
+= form_for(@issue) do |f| 
+  - if @issue.errors.any? 
+    #error_explanation
+      %h2= pluralize(@issue.errors.count, "error") + 'prohibited this issue from being saved:'
+
+      %ul
+      - @issue.errors.full_messages.each do |message|
+        %li= message
+
+  .field.leftside
+    = f.label :customer_name
+    = f.text_field :customer_name
+  .field.leftside
+    = f.label :customer_mail
+    = f.text_field :customer_mail
+  .field.leftside
+    = f.label :department_id
+    = f.select :department_id , Department.all.collect {|t| [t.name, t.id]}, {:required => true}
+  .field.rightside
+    = f.label :subject
+    = f.text_field :subject
+  .field.rightside
+    = f.label :description
+    = f.text_area :description, rows: 6
+  .actions
+    = f.submit

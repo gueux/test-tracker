@@ -1,0 +1,26 @@
+= form_for @issue, url: {method: 'patch'} do |f| 
+  - if @issue.errors.any? 
+    #error_explanation
+      %h2= pluralize(@issue.errors.count, "error") + 'prohibited this issue from being saved:'
+
+      %ul
+      - @issue.errors.full_messages.each do |message|
+        %li= message
+
+  .field.leftside
+    = f.label :department_id
+    = f.select :department_id , Department.all.collect {|t| [t.name, t.id]}, {:required => true}
+  .field.leftside
+    = f.label :assigned_to_id
+    = f.select :assigned_to_id, options_for_select( Staff.all.collect {|t| [t.name, t.id]}, @issue.get_assigned_staff ), {:required => true}
+  .field.leftside
+    = f.label :status_id
+    = f.select :status_id, options_for_select( IssueStatus.all.collect {|s| [s.name, s.id]}, @issue.get_issue_status ), {:required => true}
+  .field.rightside
+    = f.label :subject
+    = f.text_field :subject
+  .field.rightside
+    %label Message
+    %textarea{ rows: 6, name: 'message'}
+  .actions
+    = f.submit

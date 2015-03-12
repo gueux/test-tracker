@@ -1,0 +1,21 @@
+%h1 Listing manages
+
+%table
+  %thead
+    %tr
+      %th Index
+      %th
+      %th
+      %th
+
+  %tbody
+    - @manages.each do |manage|
+      %tr
+        %td= manage.index
+        %td= link_to 'Show', manage
+        %td= link_to 'Edit', edit_manage_path(manage)
+        %td= link_to 'Destroy', manage, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Manage', new_manage_path

@@ -1,0 +1,5 @@
+Dear <%= @issue.customer_name %>
+
+Your issue with the subject: "<%= @issue.subject%>" has been received and assigned with ID: <%= @issue.public_id%>
+Our staff is working on it.
+You may check the status of the issue following by the link: <%= public_show_url(@issue.public_id) %>

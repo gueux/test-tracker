@@ -1,0 +1,9 @@
+%h1 Staffs List
+= render partial: 'list', locals: {staffs: @staffs} unless @staffs.empty?
+%br
+
+%h1 Add new Staff
+= render partial: 'form'
+%br
+
+= link_to 'Back', manage_path
