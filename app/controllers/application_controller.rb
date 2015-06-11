@@ -2,11 +2,8 @@ class ApplicationController < ActionController::Base
 
   before_action :authorize
 
-  def render_error(arg)
-    arg = {:message => arg} unless arg.is_a?(Hash)
+  def render_error(status)
 
-    @message = arg[:message]
-    @message = l(@message) if @message.is_a?(Symbol)
     @status = arg[:status] || 500
 
     respond_to do |format|
@@ -34,8 +31,8 @@ class ApplicationController < ActionController::Base
     render_404
   end  
 
-  def render_404(options={})
-    render_error({:message => :notice_file_not_found, :status => 404}.merge(options))
+  def render_404
+    render_error :status => 404
     return false
   end
 
